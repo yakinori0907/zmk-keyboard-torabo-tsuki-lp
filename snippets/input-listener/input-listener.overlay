@@ -3,5 +3,5 @@
 &pointing_listener {
     status = "okay";
     device = <&pointing_device>;
-    input-processors = <&zip_temp_layer 1 1500>;
+    input-processors = <&zip_temp_layer 1 500>;
 };
