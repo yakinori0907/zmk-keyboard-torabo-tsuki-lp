@@ -2,8 +2,22 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
-&pointing_listener {
-    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+/ {
+    // Runtime-editable speed curves. The Web editor exposes these as
+    // the "pointer" and "scroll" instances.
+    pointer_accel: pointer_accel {
+        compatible = "zmk,input-processor-runtime-accel";
+        #input-processor-cells = <0>;
+        instance-id = "pointer";
+        default-curve = <447 531 68017 910 165412 3638 301093 12950>;
+    };
+
+    scroll_accel: scroll_accel {
+        compatible = "zmk,input-processor-runtime-accel";
+        #input-processor-cells = <0>;
+        instance-id = "scroll";
+        default-curve = <26 496 3914 1827 6125 4062 7612 7664>;
+    };
 };
 
 &size_s_transform {
