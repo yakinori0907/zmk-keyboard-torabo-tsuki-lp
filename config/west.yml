@@ -4,10 +4,22 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: sekigon-gonnoc
       url-base: https://github.com/sekigon-gonnoc
+    - name: nat-chan
+      url-base: https://github.com/nat-chan
   projects:
+    # Runtime-editable pointer and scroll acceleration.
+    - name: zmk-module-runtime-accel
+      remote: nat-chan
+      revision: main
+      import: true
+    # Override the imported dependency with the ZMK v0.3 compatible fork.
+    - name: zmk-feature-custom-settings
+      remote: nat-chan
+      revision: v0.3-compat
+    # Patched ZMK with custom Studio RPC support.
     - name: zmk
-      remote: zmkfirmware
-      revision: v0.3
+      remote: nat-chan
+      revision: 35bb5dafecd5931c432c74e1b630cf12097671e4
       import: app/west.yml
     - name: zmk-component-bmp-boost
       remote: sekigon-gonnoc
