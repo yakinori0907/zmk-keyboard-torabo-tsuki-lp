@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/sekigon-gonnoc
     - name: nat-chan
       url-base: https://github.com/nat-chan
+    - name: prospector
+      url-base: https://github.com/t-ogura
   projects:
     # Runtime-editable pointer and scroll acceleration.
     - name: zmk-module-runtime-accel
@@ -21,6 +23,11 @@ manifest:
       remote: nat-chan
       revision: 35bb5dafecd5931c432c74e1b630cf12097671e4
       import: app/west.yml
+    # Broadcast keyboard status to Prospector Scanner.
+    - name: prospector-zmk-module
+      remote: prospector
+      revision: v2.2.2
+      path: modules/prospector-zmk-module
     - name: zmk-component-bmp-boost
       remote: sekigon-gonnoc
       import: west.yml
