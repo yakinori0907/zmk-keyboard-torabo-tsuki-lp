@@ -92,7 +92,7 @@
 
         // 0:default_layer
 
-        layer_0 {
+        default {
             bindings = <
 &none  &none         &none     &none     &none   &none                                     &none        &none  &none      &none     &none             &none
 &none  &kp Q         &kp W     &kp E     &kp R   &kp T                                     &kp Y        &kp U  &kp I      &kp O     &kp P             &none
@@ -104,7 +104,7 @@
 
         // 1:mouse_layer
 
-        layer_1 {
+        mouse {
             bindings = <
 &none  &none   &none   &none   &none   &none                   &none   &none         &none          &none     &none   &none
 &none  &trans  &trans  &trans  &trans  &trans                  &trans  &kp LA(LEFT)  &kp LA(RIGHT)  &trans    &trans  &none
@@ -116,7 +116,7 @@
 
         // 2:mark_layer
 
-        layer_2 {
+        mark {
             bindings = <
 &none  &none            &none          &none     &none       &none                                   &none           &none         &none            &none            &none                   &none
 &none  &kp EXCLAMATION  &kp JP_DQUOTE  &kp HASH  &kp DOLLAR  &kp PERCENT                             &kp JP_AMP      &kp JP_QUOTE  &kp JP_LPAREN    &kp JP_RPAREN    &kp JP_YEN              &none
@@ -128,7 +128,7 @@
 
         // 3:number_layer
 
-        layer_3 {
+        number {
             bindings = <
 &none  &none      &none     &none     &none   &none                                 &none         &none         &none         &none         &none                   &none
 &none  &trans     &trans    &trans    &trans  &trans                                &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SPACE     &kp JP_PLUS             &none
@@ -152,7 +152,7 @@
 
         // 5:scroll_layer
 
-        layer_5 {
+        scroll {
             bindings = <
 &none  &none   &none   &none   &none   &none                   &none   &none   &none   &none   &none   &none
 &none  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &none
@@ -164,7 +164,7 @@
 
         // 6:bt_layer
 
-        layer_6 {
+        bluetooth {
             bindings = <
 &none  &none         &none         &none         &none         &none                                      &none         &none         &none         &none         &none           &none
 &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                               &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none
