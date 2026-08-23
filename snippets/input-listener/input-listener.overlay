@@ -5,18 +5,19 @@
     status = "okay";
     device = <&pointing_device>;
 
-    // 通常時：カーソル移動＋オートマウスレイヤー
-    input-processors = <
-        &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-        &zip_temp_layer 1 500
-    >;
+    // Normal pointing: runtime acceleration + direction correction +
+    // the existing 500 ms auto-mouse layer.
+    input-processors = <&pointer_accel>,
+                       <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+                       <&zip_temp_layer 1 500>;
 
-    // レイヤー5のときだけスクロールへ変換
+    // Keep the existing scroll layer (layer 5), while adding the runtime
+    // scroll curve, horizontal direction correction, and 1/10 scaling.
     scroll_layer {
         layers = <5>;
-        input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-            &zip_xy_to_scroll_mapper
-        >;
+        input-processors = <&scroll_accel>,
+                           <&zip_xy_to_scroll_mapper>,
+                           <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>,
+                           <&zip_scroll_scaler 1 10>;
     };
 };
