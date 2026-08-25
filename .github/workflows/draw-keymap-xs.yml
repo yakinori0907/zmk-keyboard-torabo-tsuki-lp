@@ -1,0 +1,59 @@
+name: Draw XS keymap
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "config/*.keymap"
+      - "config/*.dtsi"
+      - "keymap-drawer/filter-xs.py"
+      - "keymap-drawer/torabo-tsuki-lp-xs.json"
+      - ".github/workflows/draw-keymap-xs.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install keymap-drawer
+        run: pip install keymap-drawer
+
+      - name: Parse shared ZMK keymap
+        run: |
+          mkdir -p keymap-drawer/output
+          keymap parse -z config/keymap.keymap > keymap-drawer/output/shared-66.yaml
+
+      - name: Convert to XS right-trackball layout
+        run: |
+          python keymap-drawer/filter-xs.py \
+            keymap-drawer/output/shared-66.yaml \
+            keymap-drawer/output/torabo-tsuki-lp-xs.yaml
+
+      - name: Draw SVG
+        run: |
+          keymap draw keymap-drawer/output/torabo-tsuki-lp-xs.yaml \
+            > keymap-drawer/output/torabo-tsuki-lp-xs.svg
+          rm keymap-drawer/output/shared-66.yaml
+
+      - name: Commit generated files
+        run: |
+          if git diff --quiet -- keymap-drawer/output; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add keymap-drawer/output
+          git commit -m "Update XS keymap drawing"
+          git push
