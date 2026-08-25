@@ -21,6 +21,15 @@ XS_POSITIONS = [
 ]
 POSITION_MAP = {old: new for new, old in enumerate(XS_POSITIONS)}
 
+# Map S-layout combo indices to their positions in the shared 66-position keymap.
+S_TO_SHARED = [
+    *range(13, 23),
+    *range(25, 30),
+    *range(32, 37),
+    *range(39, 51),
+    *range(53, 65),
+]
+
 
 def flatten(values):
     for value in values:
@@ -52,6 +61,10 @@ def main() -> None:
         if positions is None:
             filtered_combos.append(combo)
             continue
+        # Combos using only S-layout indices are defined in the active physical
+        # layout's 0-based numbering, while layers are parsed in shared order.
+        if positions and all(0 <= position < len(S_TO_SHARED) for position in positions):
+            positions = [S_TO_SHARED[position] for position in positions]
         if not all(position in POSITION_MAP for position in positions):
             continue
         mapped = [POSITION_MAP[position] for position in positions]
