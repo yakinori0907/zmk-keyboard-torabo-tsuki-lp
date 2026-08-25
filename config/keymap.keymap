@@ -46,11 +46,13 @@
         kp_esc {
             bindings = <&kp ESC>;
             key-positions = <13 14>;
+            timeout-ms = <120>;
         };
 
         kp_tab {
             bindings = <&kp TAB>;
             key-positions = <25 26>;
+            timeout-ms = <120>;
         };
     };
 
