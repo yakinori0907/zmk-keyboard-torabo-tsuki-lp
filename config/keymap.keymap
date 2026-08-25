@@ -140,7 +140,7 @@
 
         // 4:function_layer
 
-        layer_4 {
+        function {
             bindings = <
 &none  &none       &none     &none     &none    &none                                 &none      &none         &none        &none          &none          &none
 &none  &kp F1      &kp F2    &kp F3    &kp F4   &kp F5                                &trans     &kp HOME      &kp UP       &kp END        &kp PAGE_UP    &none
