@@ -51,7 +51,7 @@ layers:
     h: number
   - '&td_bs_del'
   - t: ENTER
-    h: '4'
+    h: function
   - LEFT
   - RIGHT
   mouse:
@@ -254,7 +254,7 @@ layers:
   - '0'
   - ','
   - /
-  '4':
+  function:
   - F1
   - F2
   - F3
