@@ -48,7 +48,7 @@ jobs:
 
       - name: Commit generated files
         run: |
-          if git diff --quiet -- keymap-drawer/output; then
+          if [ -z "$(git status --porcelain -- keymap-drawer/output)" ]; then
             echo "No generated changes"
             exit 0
           fi
