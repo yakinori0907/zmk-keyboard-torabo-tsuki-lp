@@ -42,7 +42,10 @@ jobs:
 
       - name: Draw SVG
         run: |
-          keymap draw keymap-drawer/output/torabo-tsuki-lp-xs.yaml \
+          keymap draw \
+            --qmk-info-json keymap-drawer/torabo-tsuki-lp-xs.json \
+            --layout-name LAYOUT_xs_trackball_right \
+            keymap-drawer/output/torabo-tsuki-lp-xs.yaml \
             > keymap-drawer/output/torabo-tsuki-lp-xs.svg
           rm keymap-drawer/output/shared-66.yaml
 
